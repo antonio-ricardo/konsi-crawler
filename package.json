@@ -13,7 +13,8 @@
   "lint-staged": {
     "*.ts": [
       "prettier -w",
-      "eslint --fix"
+      "eslint --fix",
+      "test"
     ]
   },
   "dependencies": {
