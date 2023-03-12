@@ -25,7 +25,7 @@ export const consultBenefitsForCpfService = async ({
     ) as HTMLButtonElement | null
 
     if (!findBenefitsForCpfCard) {
-      throw new NotFoundError('Not find find benefits for cpf card')
+      throw new Error('Not find find benefits for cpf card')
     }
 
     findBenefitsForCpfCard.click()
@@ -62,13 +62,13 @@ export const consultBenefitsForCpfService = async ({
     ) as HTMLElement
 
     if (!benefitsCard || !benefitsCard.shadowRoot) {
-      throw new NotFoundError('Not found benefits card', { benefitsCard })
+      throw new Error('Not found benefits card')
     }
 
     const button = benefitsCard.shadowRoot.querySelector('button')
 
     if (!button) {
-      throw new NotFoundError('Not found search benefits button')
+      throw new Error('Not found search benefits button')
     }
 
     button.click()

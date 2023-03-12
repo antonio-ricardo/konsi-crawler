@@ -1,5 +1,4 @@
 import { Page } from 'puppeteer'
-import { NotFoundError } from '../errors/notFound'
 import { waitForSeconds } from '../helpers/waitForSeconds.helper'
 
 const querySelectorsMap = {
@@ -22,7 +21,7 @@ export const getBenefitsNumberService = async (page: Page) => {
     )
 
     if (!benefitsCard) {
-      return new NotFoundError('Not find benefits item')
+      throw new Error('Not find benefits item')
     }
 
     const benefitsItem = benefitsCard.querySelectorAll('ion-item')
@@ -31,7 +30,7 @@ export const getBenefitsNumberService = async (page: Page) => {
 
     benefitsItem.forEach((benefit) => {
       if (!benefit || !benefit.firstChild || !benefit.firstChild.textContent) {
-        return new NotFoundError('Not find benefits', { benefit })
+        throw new Error('Not find benefits')
       }
 
       benefitsNumbers.push(benefit.firstChild.textContent)
