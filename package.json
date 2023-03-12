@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts -e ts",
     "start": "npm run build && node dist/server.js",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --detectOpenHandles --passWithNoTests",
     "build": "tsc"
   },
   "husky": {
@@ -14,7 +14,7 @@
     "*.ts": [
       "prettier -w",
       "eslint --fix",
-      "test"
+      "npm run test"
     ]
   },
   "dependencies": {
