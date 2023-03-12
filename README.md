@@ -13,6 +13,8 @@ Teste tecnico passado pela KONSI
 
 - inicie o projeto (yarn start)
 
+- documentação disponivel em: /api-docs
+
 # Principais tecnologias (libs, ferramentas e etc) 🚀
 
 - typescript e tsc
