@@ -10,7 +10,7 @@ describe('Get benefits by cpf e2e tests', () => {
     })
 
     const secondPromise = request(app).post('/benefits').send({
-      cpf: '1',
+      cpf: '2',
       login: 'testekonsi',
       password: 'testekonsi',
     })
@@ -84,7 +84,6 @@ describe('Get benefits by cpf e2e tests', () => {
     expect(invalidLoginResponse.status).toEqual(400)
   })
 
-  // it.todo('Should return the benefits when have') nao tinha cpf com beneficios quando fiz os testes
   it('Should return "matricula não encontrada!" when dont have benefits', async () => {
     const { body, status } = await request(app).post('/benefits').send({
       cpf: '1',
