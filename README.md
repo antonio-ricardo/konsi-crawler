@@ -28,3 +28,5 @@ Teste tecnico passado pela KONSI
 - dotenv
 
 - prettier e eslint
+
+- swagger-jsdoc e swagger-ui-express
