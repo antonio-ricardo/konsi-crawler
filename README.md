@@ -9,9 +9,9 @@ Teste tecnico passado pela KONSI
 
 # Como rodar o projeto 🚀
 
-- instale as dependências (npm i)
+- instale as dependências (yarn)
 
-- inicie o projeto (npm run start)
+- inicie o projeto (yarn start)
 
 # Principais tecnologias (libs, ferramentas e etc) 🚀
 
