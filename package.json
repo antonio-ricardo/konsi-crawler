@@ -3,7 +3,8 @@
     "dev": "nodemon --exec ts-node src/server.ts -e ts",
     "start": "npm run build && node dist/server.js",
     "test": "jest --detectOpenHandles --passWithNoTests",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
