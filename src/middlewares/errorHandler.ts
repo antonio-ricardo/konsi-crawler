@@ -30,7 +30,7 @@ const getErrorResponse = (err: Error) => {
     case 'BadRequestError':
       return { message: err.message, status: 400 }
     case 'NotFoundError':
-      return { message: err.message, status: 400 }
+      return { message: err.message, status: 404 }
     default:
       return { message: err.message, status: 500 }
   }

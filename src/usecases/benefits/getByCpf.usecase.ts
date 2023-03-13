@@ -1,4 +1,5 @@
 import { GetBenefitsForCpfDto } from '../../dto/getBenefitsForCpf.dto'
+import { NotFoundError } from '../../errors/notFound'
 import { getBrowserInstance } from '../../helpers/getBrowserInstance.helper'
 import { consultBenefitsForCpfService } from '../../services/consultBenefitsForCpf.service'
 import { getBenefitsNumberService } from '../../services/getBenefitsNumber.service'
@@ -24,6 +25,10 @@ export const getBenefitsByCpfUsecase = async (input: GetBenefitsForCpfDto) => {
   const benefitsNumbers = await getBenefitsNumberService(page)
 
   await page.close()
+
+  if (benefitsNumbers[0] === 'Matrícula não encontrada!') {
+    throw new NotFoundError('Matrícula não encontrada!')
+  }
 
   return { benefitsNumbers }
 }

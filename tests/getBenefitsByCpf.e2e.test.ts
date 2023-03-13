@@ -21,13 +21,13 @@ describe('Get benefits by cpf e2e tests', () => {
     ])
 
     expect(firstResponse.body).toEqual({
-      benefitsNumbers: ['Matrícula não encontrada!'],
+      message: 'Matrícula não encontrada!',
     })
-    expect(firstResponse.status).toEqual(200)
+    expect(firstResponse.status).toEqual(404)
     expect(secondResponse.body).toEqual({
-      benefitsNumbers: ['Matrícula não encontrada!'],
+      message: 'Matrícula não encontrada!',
     })
-    expect(secondResponse.status).toEqual(200)
+    expect(secondResponse.status).toEqual(404)
   })
 
   it('Should continue running the crawler if another page throws', async () => {
@@ -51,9 +51,9 @@ describe('Get benefits by cpf e2e tests', () => {
     expect(firstResponse.body.message).toEqual('Verify user and password')
     expect(firstResponse.status).toEqual(400)
     expect(secondResponse.body).toEqual({
-      benefitsNumbers: ['Matrícula não encontrada!'],
+      message: 'Matrícula não encontrada!',
     })
-    expect(secondResponse.status).toEqual(200)
+    expect(secondResponse.status).toEqual(404)
   })
 
   it('Should return badRequestError if login or password is invalid', async () => {
@@ -84,14 +84,14 @@ describe('Get benefits by cpf e2e tests', () => {
     expect(invalidLoginResponse.status).toEqual(400)
   })
 
-  it('Should return "matricula não encontrada!" when dont have benefits', async () => {
+  it('Should throw notFoundError with message "matricula não encontrada!" when dont have benefits', async () => {
     const { body, status } = await request(app).post('/benefits').send({
       cpf: '1',
       login: 'testekonsi',
       password: 'testekonsi',
     })
 
-    expect(body).toEqual({ benefitsNumbers: ['Matrícula não encontrada!'] })
-    expect(status).toEqual(200)
+    expect(body).toEqual({ message: 'Matrícula não encontrada!' })
+    expect(status).toEqual(404)
   })
 })
